@@ -50,3 +50,11 @@
     cursor: pointer;
   }
 }
+
+.nav-links:has(button:hover) button {
+  color: hsl(var(--muted-foreground));
+}
+
+.nav-links:has(button:hover) button:hover {
+  color: hsl(var(--foreground));
+}

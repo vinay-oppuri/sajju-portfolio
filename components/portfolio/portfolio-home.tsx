@@ -146,7 +146,7 @@ export function PortfolioHome() {
 
   return (
     <main ref={root}>
-      <header className="fixed inset-x-0 top-4 z-20 mx-auto grid w-[min(46rem,calc(100%-2rem))] grid-cols-[2.75rem_1fr_auto] items-center gap-2 sm:top-6">
+      <header className="fixed inset-x-0 top-4 z-20 mx-auto flex justify-center items-center gap-2 sm:top-6">
         <a
           aria-label="Sajju home"
           className="grid size-11 place-items-center rounded-xl bg-muted/80 text-xl backdrop-blur"
@@ -155,7 +155,14 @@ export function PortfolioHome() {
           S
         </a>
 
-        <nav className="flex h-11 items-center justify-around rounded-xl bg-muted/80 px-2 text-xs backdrop-blur">
+        <nav
+          className="
+            flex h-11 items-center justify-center rounded-xl
+            bg-muted/80 px-2 text-xs backdrop-blur-xs
+            [&:has(button:hover)_button]:text-muted-foreground/60
+            [&:has(button:hover)_button:hover]:text-foreground
+          "
+        >
           {[
             ["Work", "work"],
             ["Services", "services"],
@@ -163,8 +170,8 @@ export function PortfolioHome() {
             ["Contact", "contact"],
           ].map(([label, id]) => (
             <Button
-              className="h-8 px-2 sm:px-3"
               key={id}
+              className="h-8 px-8! text-sm hover:bg-transparent!"
               onClick={() => scrollTo(id)}
               size="sm"
               variant="ghost"
