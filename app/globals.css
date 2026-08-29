@@ -58,3 +58,23 @@
 .nav-links:has(button:hover) button:hover {
   color: hsl(var(--foreground));
 }
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+  will-change: transform;
+}
+
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
