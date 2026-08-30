@@ -3,45 +3,58 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/scroll";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
-import { HeroShowcase } from "@/components/portfolio/sections/hero-showcase";
+import { FlipFadeText } from "@/components/ui/flip-fade-text";
+import { CardTimeMachine } from "@/components/ui/new-cards";
 
 export function HeroSection() {
   return (
     <section
-      className="relative flex min-h-svh flex-col justify-between overflow-hidden pb-8 pt-28 sm:pt-32 lg:pt-36"
+      className="relative flex flex-col justify-center overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24"
       id="top"
     >
-      {/* Background Flickering Grid */}
-      <FlickeringGrid
-        className="pointer-events-none absolute inset-0 -z-10 size-full"
-        color="rgb(0, 0, 0)"
-        flickerChance={0.25}
-        gridGap={6}
-        maxOpacity={0.12}
-        squareSize={4}
-      />
-
       {/* Subtle bottom fade to blend smoothly with the next section */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-t from-background via-background/60 to-transparent" />
 
-      {/* Center Headline & Introduction */}
-      <div className="my-auto w-full px-5 py-10 sm:px-10 lg:px-[5vw]">
-        <div className="flex flex-col items-center justify-center text-center gap-8 lg:gap-16 pl-24">
-          <div>
-            <h1
-              className="max-w-4xl text-7xl font-normal leading-[0.82] tracking-tighter"
+      {/* Main Hero Container */}
+      <div className="w-full max-w-7xl mx-auto px-5 sm:px-10 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12 xl:gap-16">
+          {/* Left Column: Heading, Animated Flip Text, Intro & CTAs */}
+          <div className="flex flex-col items-start text-left gap-6 sm:gap-7">
+            {/* Status Pill Badge */}
+            <div
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/60 px-3.5 py-1.5 text-xs text-muted-foreground backdrop-blur-xs shadow-xs"
               data-hero-enter
             >
-              Stories in motion.
-              <br />
-              <div className="text-primary text-8xl mt-4">Crafted with intent.</div>
-            </h1>
-          </div>
+              <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-mono text-[11px] uppercase tracking-wider">
+                Available for freelance &amp; motion direction
+              </span>
+            </div>
 
-          <div className="space-y-6 lg:max-w-xl flex flex-col items-center">
+            {/* Headline with FlipFadeText */}
+            <div className="space-y-1" data-hero-enter>
+              <h1 className="text-4xl font-normal leading-[0.92] tracking-tighter sm:text-6xl md:text-6xl lg:text-7xl">
+                Stories in motion.
+              </h1>
+              <div className="flex items-center py-1">
+                <FlipFadeText
+                  words={[
+                    "CRAFTED WITH INTENT",
+                    "SHAPED BY RHYTHM",
+                    "DESIGNED TO MOVE",
+                    "3D VISUAL SYSTEMS",
+                    "KINETIC IDENTITIES",
+                  ]}
+                  interval={3200}
+                  className="justify-start min-h-0"
+                  textClassName="text-primary font-normal tracking-tighter text-4xl sm:text-6xl md:text-6xl lg:text-7xl"
+                />
+              </div>
+            </div>
+
+            {/* Description */}
             <p
-              className="text-sm leading-relaxed text-muted-foreground sm:text-base"
+              className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base"
               data-hero-enter
             >
               Motion design for brands, products, and stories that need to be
@@ -49,9 +62,10 @@ export function HeroSection() {
               UI animations, every frame is designed with rhythm and focus.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-1" data-hero-enter>
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3 pt-2" data-hero-enter>
               <Button
-                className="h-10 rounded-xl bg-foreground px-6 text-xs uppercase tracking-wider text-background transition-all hover:bg-foreground/85"
+                className="h-11 rounded-xl bg-foreground px-6 text-xs uppercase tracking-wider text-background transition-all hover:bg-foreground/85 cursor-pointer"
                 onClick={() => scrollToSection("work")}
               >
                 View selected work
@@ -59,7 +73,7 @@ export function HeroSection() {
               </Button>
 
               <Button
-                className="h-10 rounded-xl border border-border bg-muted/60 px-6 text-xs uppercase tracking-wider text-foreground transition-all hover:bg-muted"
+                className="h-11 rounded-xl border border-border bg-card/60 px-6 text-xs uppercase tracking-wider text-foreground backdrop-blur-xs transition-all hover:bg-muted cursor-pointer"
                 onClick={() => scrollToSection("contact")}
                 variant="ghost"
               >
@@ -68,16 +82,15 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Full-bleed Horizontal Motion Showcase Tape */}
-      <div className="w-full pt-4" data-hero-enter>
-        <div className="mb-3 flex items-center justify-between px-5 text-[10px] uppercase tracking-[0.14em] text-muted-foreground sm:px-10 lg:px-[5vw]">
-          <span>Selected Motion Studies</span>
-          <span className="hidden sm:inline-block">Hover to pause · Click to inspect</span>
+          {/* Right Column: 3D Video Showcase Time-Machine */}
+          <div
+            className="flex w-full items-center justify-center lg:justify-end"
+            data-hero-enter
+          >
+            <CardTimeMachine />
+          </div>
         </div>
-        <HeroShowcase />
       </div>
     </section>
   );

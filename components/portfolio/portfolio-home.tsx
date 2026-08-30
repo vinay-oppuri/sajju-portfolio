@@ -8,6 +8,7 @@ import Lenis from "lenis";
 import {
   HeaderSection,
   HeroSection,
+  ClientsMarquee,
   IntroSection,
   WorkSection,
   ServicesSection,
@@ -78,7 +79,8 @@ export function PortfolioHome() {
     <main ref={root}>
       <HeaderSection />
       <HeroSection />
-      <IntroSection />
+      <ClientsMarquee />
+      {/* <IntroSection /> */}
       <WorkSection />
       <ServicesSection />
       <AboutSection />

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function WorkSection() {
   return (
-    <section className="border-t px-5 py-24 sm:px-10 lg:px-[5vw] lg:py-32" id="work">
+    <section className="px-5 py-24 sm:px-10 lg:px-[5vw] lg:py-32" id="work">
       <SectionLabel
         aside="Examples of visual direction and motion exploration."
         number="01"
