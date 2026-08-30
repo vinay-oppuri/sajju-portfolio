@@ -6,27 +6,29 @@ import { scrollToSection } from "@/lib/scroll";
 
 export function HeaderSection() {
   return (
-    <header className="fixed inset-x-0 top-4 z-20 mx-auto flex justify-center items-center gap-2 sm:top-6">
+    <header className="fixed inset-x-0 top-3 z-40 mx-auto flex items-center justify-between sm:justify-center gap-1.5 sm:gap-2 px-3 sm:top-5 w-full max-w-full">
+      {/* Brand Icon */}
       <a
         aria-label="Sajju home"
-        className="grid size-10 place-items-center rounded-xl bg-muted/80 text-xl backdrop-blur"
+        className="flex size-8 sm:size-9 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-background/90 text-xs font-semibold tracking-tight text-foreground backdrop-blur-md transition-colors hover:border-foreground/40 shadow-xs"
         href="#top"
       >
         S
       </a>
 
+      {/* Navigation */}
       <nav
         className="
-          flex h-10 items-center justify-center rounded-xl
-          bg-muted/80 px-4 text-xs backdrop-blur-xs
-          [&:has(button:hover)_button]:text-muted-foreground/60
+          flex h-8 sm:h-9 items-center justify-center rounded-lg
+          border border-border/70 bg-background/90 px-1 sm:px-1.5 backdrop-blur-md shadow-xs
+          [&:has(button:hover)_button]:text-muted-foreground/50
           [&:has(button:hover)_button:hover]:text-foreground
         "
       >
         {navItems.map(({ label, id }) => (
           <Button
             key={id}
-            className="h-8 px-5! text-sm tracking-tight hover:bg-transparent!"
+            className="h-6 sm:h-7 rounded-md px-2 sm:px-3 text-xs font-medium tracking-tight hover:bg-muted/60 transition-colors cursor-pointer"
             onClick={() => scrollToSection(id)}
             size="sm"
             variant="ghost"

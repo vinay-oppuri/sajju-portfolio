@@ -76,7 +76,7 @@ export function PortfolioHome() {
   }, []);
 
   return (
-    <main ref={root}>
+    <main ref={root} className="w-full overflow-x-clip">
       <HeaderSection />
       <HeroSection />
       <ClientsMarquee />

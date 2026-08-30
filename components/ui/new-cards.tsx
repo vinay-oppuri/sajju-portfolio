@@ -78,7 +78,7 @@ export function CardTimeMachine({
   return (
     <div
       className={cn(
-        "relative flex flex-row items-center justify-center gap-5 sm:gap-7 shrink-0 pt-8 pb-2 sm:pt-10 sm:pb-2",
+        "relative flex flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-full pt-4 pb-2 sm:pt-8 sm:pb-2",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -89,7 +89,7 @@ export function CardTimeMachine({
     >
       {/* 3D Stack Stage */}
       <div
-        className="relative w-75 sm:w-95 md:w-105 aspect-16/10 shrink-0 flex items-center justify-center"
+        className="relative w-[min(65vw,19rem)] sm:w-80 md:w-96 aspect-16/10 shrink-0 flex items-center justify-center"
         style={{ perspective: "800px" }}
       >
         {items.map((item, i) => {
@@ -101,7 +101,7 @@ export function CardTimeMachine({
             <motion.div
               key={item.id}
               className={cn(
-                "absolute rounded-2xl flex flex-col overflow-hidden w-full h-full origin-center border transition-colors duration-300",
+                "absolute rounded-xl flex flex-col overflow-hidden w-full h-full origin-center border transition-colors duration-300",
                 isActive
                   ? "pointer-events-auto border-white/20 bg-neutral-900 shadow-[0_20px_50px_rgba(0,0,0,0.45)] ring-1 ring-white/15"
                   : "pointer-events-auto border-neutral-700/80 dark:border-white/20 bg-neutral-900 shadow-md hover:border-white/40 cursor-pointer"
@@ -155,26 +155,23 @@ export function CardTimeMachine({
               {isActive && (
                 <>
                   {/* Top Bar */}
-                  <div className="absolute inset-x-0 top-0 flex items-center justify-between p-3.5 sm:p-4 text-white z-10">
-                    <div className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-[10px] backdrop-blur-md">
-                      <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="font-mono uppercase tracking-wider">
-                        {item.category}
-                      </span>
-                    </div>
+                  <div className="absolute inset-x-0 top-0 flex items-center justify-between p-2.5 sm:p-3.5 text-white z-10">
+                    <span className="rounded-md border border-white/20 bg-black/60 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] uppercase tracking-wider backdrop-blur-md">
+                      {item.category}
+                    </span>
 
-                    <span className="rounded-md border border-white/15 bg-black/60 px-2 py-0.5 font-mono text-[9px] text-white/80 backdrop-blur-md">
+                    <span className="rounded-md border border-white/15 bg-black/60 px-1.5 sm:px-2 py-0.5 font-mono text-[8px] sm:text-[9px] text-white/80 backdrop-blur-md">
                       {item.duration}
                     </span>
                   </div>
 
                   {/* Bottom Bar */}
-                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-5 text-white z-10">
-                    <div>
-                      <span className="font-mono text-[10px] text-blue-400">
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-2.5 sm:p-4 text-white z-10">
+                    <div className="min-w-0 pr-2">
+                      <span className="font-mono text-[9px] sm:text-[10px] text-blue-400 block truncate">
                         {String(i + 1).padStart(2, "0")} · {item.tool}
                       </span>
-                      <h4 className="text-base sm:text-lg font-normal tracking-tight">
+                      <h4 className="text-xs sm:text-base font-normal tracking-tight truncate">
                         {item.title}
                       </h4>
                     </div>
@@ -182,11 +179,11 @@ export function CardTimeMachine({
                     {item.slug && (
                       <Link
                         href={`/work/${item.slug}`}
-                        className="group/link flex size-8 sm:size-9 items-center justify-center rounded-full border border-white/25 bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white hover:text-black cursor-pointer"
+                        className="group/link flex size-7 sm:size-8 shrink-0 items-center justify-center rounded-md border border-white/25 bg-white/15 backdrop-blur-md transition-colors hover:bg-white hover:text-black cursor-pointer"
                         title="View case study"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <ArrowUpRight className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                        <ArrowUpRight className="size-3.5 sm:size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
                       </Link>
                     )}
                   </div>
@@ -210,7 +207,7 @@ export function CardTimeMachine({
             return (
               <button
                 key={`main-${index}`}
-                className="relative inline-flex items-center justify-end py-1.5 w-12 sm:w-16 group cursor-pointer border-0 bg-transparent"
+                className="relative inline-flex items-center justify-end py-1.5 w-8 sm:w-12 md:w-14 group cursor-pointer border-0 bg-transparent"
                 onMouseEnter={() => handleTimelineHover(index)}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -221,8 +218,8 @@ export function CardTimeMachine({
                   className={cn(
                     "h-0.75 rounded-full origin-right transition-colors",
                     isSelected
-                      ? "bg-blue-500 w-5.5 sm:w-6.5 shadow-[0_0_8px_rgba(59,130,246,0.6)]"
-                      : "bg-neutral-400 dark:bg-neutral-600 group-hover:bg-neutral-800 dark:group-hover:bg-neutral-200 w-3.5 sm:w-4.5"
+                      ? "bg-blue-500 w-4 sm:w-6 shadow-[0_0_8px_rgba(59,130,246,0.6)]"
+                      : "bg-neutral-400 dark:bg-neutral-600 group-hover:bg-neutral-800 dark:group-hover:bg-neutral-200 w-2.5 sm:w-4"
                   )}
                   animate={{
                     scaleX:
@@ -246,7 +243,7 @@ export function CardTimeMachine({
             return (
               <div
                 key={`sub-${node.index}`}
-                className="py-0.5 w-12 sm:w-16 flex justify-end cursor-pointer"
+                className="py-0.5 w-8 sm:w-12 md:w-14 flex justify-end cursor-pointer"
                 onMouseEnter={() => handleTimelineHover(node.index)}
                 onClick={(e) => {
                   e.stopPropagation();

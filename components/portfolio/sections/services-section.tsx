@@ -1,29 +1,64 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { services } from "@/components/portfolio/data/portfolio-data";
+"use client";
+
 import { SectionLabel } from "@/components/portfolio/section-label";
+
+const servicesList = [
+  {
+    number: "01",
+    title: "Brand Motion",
+    description: "Identity animation, logo reveals, launch moments, and foundational motion systems.",
+  },
+  {
+    number: "02",
+    title: "Product Animation",
+    description: "Product walkthroughs and interface motion that make features feel intuitive and clear.",
+  },
+  {
+    number: "03",
+    title: "3D Visual Systems",
+    description: "Procedural simulations, dynamic spatial visuals, and renders crafted in Blender and Octane.",
+  },
+  {
+    number: "04",
+    title: "Kinetic Typography",
+    description: "Rhythmic typographic motion and punchy promotional edits built for digital screens.",
+  },
+];
 
 export function ServicesSection() {
   return (
-    <section className="border-t bg-card px-5 py-24 sm:px-10 lg:px-[5vw] lg:py-32" id="services">
-      <SectionLabel number="02">What I can help with</SectionLabel>
+    <section
+      className="px-5 py-20 sm:px-10 lg:px-8 lg:py-28 max-w-6xl mx-auto"
+      id="services"
+    >
+      {/* Section Header */}
+      <SectionLabel
+        number="02"
+        aside="Core capabilities"
+      >
+        Services
+      </SectionLabel>
 
-      <div className="mx-auto mt-12 max-w-5xl">
-        {services.map((service, index) => (
-          <Card
-            className="grid gap-4 rounded-none border-x-0 border-t-0 bg-transparent p-0 shadow-none sm:grid-cols-[4rem_1fr_1fr]"
-            data-reveal
+      {/* Services List */}
+      <div className="mt-8 lg:mt-12 divide-y divide-border/80 border-y border-border/80">
+        {servicesList.map((service) => (
+          <div
             key={service.title}
+            data-reveal
+            className="grid gap-3 py-6 sm:grid-cols-[3rem_1fr_1.4fr] sm:gap-6 sm:py-8 transition-colors hover:bg-card/40 sm:px-3 -mx-3 px-3 rounded-lg"
           >
-            <CardContent className="contents">
-              <span className="pt-7 text-xs text-primary">0{index + 1}</span>
-              <h3 className="py-7 text-3xl tracking-[-0.07em] sm:text-5xl">
-                {service.title}
-              </h3>
-              <p className="pb-7 text-sm leading-relaxed text-muted-foreground sm:pt-8">
-                {service.description}
-              </p>
-            </CardContent>
-          </Card>
+            <span className="font-mono text-xs font-semibold text-primary">
+              {service.number}
+            </span>
+
+            <h3 className="text-xl sm:text-2xl font-normal tracking-[-0.03em] text-foreground">
+              {service.title}
+            </h3>
+
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {service.description}
+            </p>
+          </div>
         ))}
       </div>
     </section>

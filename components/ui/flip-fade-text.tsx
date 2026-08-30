@@ -112,7 +112,7 @@ const Word = memo(function Word({
   return (
     <motion.div
       className={cn(
-        "inline-flex flex-wrap items-center gap-x-[0.26em] tracking-tighter text-primary",
+        "inline-flex flex-wrap items-center justify-center gap-x-[0.26em] tracking-tighter text-primary",
         textClassName
       )}
       initial="initial"

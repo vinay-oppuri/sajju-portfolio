@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/components/portfolio/data/portfolio-data";
@@ -6,39 +8,87 @@ import { cn } from "@/lib/utils";
 
 export function WorkSection() {
   return (
-    <section className="px-5 py-24 sm:px-10 lg:px-[5vw] lg:py-32" id="work">
+    <section
+      className="px-5 py-16 sm:px-10 lg:px-8 lg:py-24 max-w-6xl mx-auto w-full"
+      id="work"
+    >
+      {/* Section Header */}
       <SectionLabel
-        aside="Examples of visual direction and motion exploration."
         number="01"
+        aside="Selected motion & 3D projects"
       >
         Selected work
       </SectionLabel>
 
-      <div className="mt-12 lg:mt-16">
+      {/* Projects Showcase List */}
+      <div className="mt-8 lg:mt-12 divide-y divide-border/80 border-y border-border/80">
         {projects.map((project) => (
           <Link
-            className="group grid gap-4 border-t py-5 transition-colors last:border-b sm:grid-cols-[3rem_1.15fr_.8fr_.55fr_1.5rem] sm:items-center sm:gap-5 hover:bg-muted/40"
-            data-reveal
-            href={`/work/${project.slug}`}
             key={project.slug}
+            href={`/work/${project.slug}`}
+            data-reveal
+            className="group relative block py-6 sm:py-8 transition-colors duration-200 hover:bg-card/40 sm:px-3 -mx-3 px-3 rounded-lg"
           >
-            <span className="text-xs text-muted-foreground">{project.number}</span>
-            <div
-              className={cn(
-                "relative h-36 overflow-hidden sm:h-44",
-                project.accent
-              )}
-            >
-              <span className="absolute inset-[18%] rounded-full border border-current/50" />
-              <span className="absolute bottom-[10%] right-[10%] text-4xl tracking-[-0.1em] sm:text-6xl">
-                {project.title.split(" ")[0]}
-              </span>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
+              {/* Left Side: Number, Title & Metadata */}
+              <div className="space-y-1.5 min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-muted-foreground">
+                  <span className="text-primary font-semibold">{project.number}</span>
+                  <span>/</span>
+                  <span>{project.category}</span>
+                  {project.year && (
+                    <>
+                      <span>/</span>
+                      <span>{project.year}</span>
+                    </>
+                  )}
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-normal tracking-[-0.04em] text-foreground transition-transform duration-200 group-hover:translate-x-1">
+                  {project.title}
+                </h3>
+
+                {project.tools && (
+                  <p className="text-xs font-mono text-muted-foreground/70">
+                    {project.tools}
+                  </p>
+                )}
+              </div>
+
+              {/* Right Side: Video Thumbnail & Arrow */}
+              <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-4 shrink-0">
+                {project.videoUrl ? (
+                  <div className="relative w-44 sm:w-52 md:w-56 aspect-16/10 rounded-lg overflow-hidden border border-border/60 bg-neutral-950 shrink-0">
+                    <video
+                      src={project.videoUrl}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="size-full object-cover opacity-85 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className={cn(
+                      "w-44 sm:w-52 md:w-56 aspect-16/10 rounded-lg overflow-hidden border border-border/60 flex items-center justify-center text-sm font-medium shrink-0",
+                      project.accent
+                    )}
+                  >
+                    {project.title}
+                  </div>
+                )}
+
+                {/* Arrow Icon */}
+                <div
+                  aria-hidden="true"
+                  className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border/70 bg-background text-foreground transition-colors duration-200 group-hover:border-foreground group-hover:bg-foreground group-hover:text-background"
+                >
+                  <ArrowUpRight className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </div>
+              </div>
             </div>
-            <h3 className="text-3xl tracking-[-0.07em] sm:text-4xl">
-              {project.title}
-            </h3>
-            <p className="text-sm text-muted-foreground">{project.category}</p>
-            <ArrowUpRight className="size-5 justify-self-end transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
           </Link>
         ))}
       </div>

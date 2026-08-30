@@ -17,17 +17,21 @@ export function SectionLabel({
   return (
     <div
       className={cn(
-        "grid grid-cols-[2.5rem_1fr] items-center gap-3 text-xs uppercase tracking-[0.12em] text-muted-foreground sm:grid-cols-[3rem_1fr_auto]",
+        "flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/80 pb-4 text-xs uppercase tracking-[0.14em] text-muted-foreground",
         className
       )}
+      data-reveal
     >
-      <span className="text-primary">{number}</span>
-      <div>{children}</div>
-      {aside ? (
-        <p className="hidden text-right normal-case tracking-normal sm:block">
+      <div className="flex items-center gap-3">
+        <span className="font-mono font-semibold text-primary">{number}</span>
+        <h2 className="text-foreground font-medium tracking-[0.12em]">{children}</h2>
+      </div>
+
+      {aside && (
+        <span className="font-mono text-[11px] tracking-normal text-muted-foreground sm:text-right">
           {aside}
-        </p>
-      ) : null}
+        </span>
+      )}
     </div>
   );
 }

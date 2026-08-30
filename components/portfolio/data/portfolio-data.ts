@@ -3,7 +3,12 @@ export interface ProjectItem {
   title: string;
   category: string;
   slug: string;
-  accent: string;
+  accent?: string;
+  year?: string;
+  tools?: string;
+  description?: string;
+  videoUrl?: string;
+  duration?: string;
 }
 
 export interface ServiceItem {
@@ -33,22 +38,40 @@ export const projects: ProjectItem[] = [
   {
     number: "01",
     title: "Pulse / One",
-    category: "Brand motion",
+    category: "Brand & 3D Motion",
     slug: "pulse-one",
+    year: "2025",
+    tools: "Blender · After Effects",
+    description: "A study in rhythm, energy, and brand presence designed as a promotional motion system.",
+    videoUrl:
+      "https://assets.mixkit.co/videos/preview/mixkit-abstract-rotating-sphere-of-particles-41558-large.mp4",
+    duration: "0:12",
     accent: "bg-[#dc8b74]",
   },
   {
     number: "02",
     title: "Flow State",
-    category: "Product animation",
+    category: "Product & UI Animation",
     slug: "flow-state",
+    year: "2025",
+    tools: "Figma · After Effects",
+    description: "Fluid interaction language for a digital product experience that makes features feel intuitive.",
+    videoUrl:
+      "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-charts-and-data-31913-large.mp4",
+    duration: "0:18",
     accent: "bg-[#526dc3] text-white",
   },
   {
     number: "03",
     title: "Words in Motion",
-    category: "Kinetic typography",
+    category: "Kinetic Typography",
     slug: "words-in-motion",
+    year: "2024",
+    tools: "After Effects · Premiere Pro",
+    description: "Experimental typographic cadence exploring rhythm, contrast, and visual voice.",
+    videoUrl:
+      "https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-digital-grid-animation-31915-large.mp4",
+    duration: "0:15",
     accent: "bg-[#ddd8ce]",
   },
 ];
