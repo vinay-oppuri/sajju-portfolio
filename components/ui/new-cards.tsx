@@ -78,7 +78,7 @@ export function CardTimeMachine({
   return (
     <div
       className={cn(
-        "relative flex flex-row items-center justify-center gap-6 sm:gap-8 w-full max-w-140 pt-14 pb-4 sm:pt-16",
+        "relative flex flex-row items-center justify-center gap-5 sm:gap-7 shrink-0 pt-8 pb-2 sm:pt-10 sm:pb-2",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -89,7 +89,7 @@ export function CardTimeMachine({
     >
       {/* 3D Stack Stage */}
       <div
-        className="relative flex-1 max-w-[320px] sm:max-w-100 aspect-16/10 flex items-center justify-center"
+        className="relative w-75 sm:w-95 md:w-105 aspect-16/10 shrink-0 flex items-center justify-center"
         style={{ perspective: "800px" }}
       >
         {items.map((item, i) => {
