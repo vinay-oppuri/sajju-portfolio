@@ -16,7 +16,7 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-28 sm:h-32 bg-linear-to-t from-background via-background/60 to-transparent" />
 
       {/* Main Hero Container */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-8 flex flex-col justify-between flex-1 gap-8 sm:gap-12 lg:gap-16">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-8 flex flex-col justify-center sm:justify-between flex-1 gap-8 sm:gap-12 lg:gap-16">
         {/* 1. TOP CENTER: Status Pill + Headline + Dynamic FlipFadeText */}
         <div className="flex flex-col items-center text-center gap-3 sm:gap-4 pt-1 sm:pt-4">
           {/* Centered Large Title with fluid responsive scaling */}
@@ -76,7 +76,7 @@ export function HeroSection() {
 
           {/* Right Bottom: 3D Video Cards Deck */}
           <div
-            className="flex items-center justify-center w-full max-w-full"
+            className="hidden sm:flex items-center justify-center w-full max-w-full"
             data-hero-enter
           >
             <CardTimeMachine />

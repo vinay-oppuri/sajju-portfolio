@@ -10,29 +10,15 @@ import { cn } from "@/lib/utils";
 interface CardTimeMachineProps {
   className?: string;
   items?: HeroVideo[];
-  autoPlayInterval?: number;
 }
 
 export function CardTimeMachine({
   className = "",
   items = heroVideos,
-  autoPlayInterval = 6000,
 }: CardTimeMachineProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
-  const total = items.length;
-
-  // Auto cycle through cards smoothly when not hovered
-  useEffect(() => {
-    if (isHovered || total <= 1) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % total);
-    }, autoPlayInterval);
-    return () => clearInterval(interval);
-  }, [isHovered, total, autoPlayInterval]);
 
   // Ensure active video is playing
   useEffect(() => {
@@ -81,9 +67,7 @@ export function CardTimeMachine({
         "relative flex flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-full pt-4 pb-2 sm:pt-8 sm:pb-2",
         className
       )}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
-        setIsHovered(false);
         setHoveredIndex(null);
       }}
     >
