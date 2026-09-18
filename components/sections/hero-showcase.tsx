@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motionStudies, MotionStudy } from "@/components/portfolio/data/hero-studies";
+import { motionStudies, MotionStudy } from "@/data/hero-studies";
 
 function MotionVisual({ type }: { type: MotionStudy["type"] }) {
   const [timecode, setTimecode] = useState("00:04:18:22");
@@ -26,7 +26,7 @@ function MotionVisual({ type }: { type: MotionStudy["type"] }) {
         <div className="absolute size-36 rounded-full border border-black/35 animate-pulse [animation-duration:2s]" />
         <div className="absolute size-24 rounded-full border border-black/40" />
         <div className="relative z-10 flex flex-col items-center">
-          <span className="text-4xl font-normal tracking-[-0.1em] sm:text-5xl">PULSE</span>
+          <span className="text-4xl font-normal -tracking-widest sm:text-5xl">PULSE</span>
           <span className="mt-1 text-[9px] font-mono uppercase tracking-widest opacity-80">120 BPM · MOTION SYSTEM</span>
         </div>
         <span className="absolute left-3 top-3 font-mono text-[9px] opacity-60">+01.SYS</span>
@@ -77,7 +77,7 @@ function MotionVisual({ type }: { type: MotionStudy["type"] }) {
           <div className="overflow-hidden whitespace-nowrap text-2xl font-normal uppercase leading-none tracking-[-0.08em] sm:text-3xl">
             <span className="inline-block animate-pulse">DYNAMIC TYPE</span>
           </div>
-          <div className="overflow-hidden whitespace-nowrap text-2xl font-light italic leading-none tracking-[-0.05em] text-[#7a766e] sm:text-3xl">
+          <div className="overflow-hidden whitespace-nowrap text-2xl font-light italic leading-none tracking-tighter text-[#7a766e] sm:text-3xl">
             <span>Rhythm &amp; Voice</span>
           </div>
           <div className="overflow-hidden whitespace-nowrap text-xl font-medium uppercase leading-none tracking-[-0.06em]">
@@ -151,10 +151,10 @@ function MotionCard({ item }: { item: MotionStudy }) {
   return (
     <Link
       href={`/work/${item.slug}`}
-      className="group/card relative block w-[280px] shrink-0 overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-foreground/40 hover:shadow-lg sm:w-[340px] md:w-[380px]"
+      className="group/card relative block w-70 shrink-0 overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-foreground/40 hover:shadow-lg sm:w-85 md:w-95"
     >
       {/* Live Motion Visual Box */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-border">
+      <div className="relative aspect-16/10 w-full overflow-hidden border-b border-border">
         <MotionVisual type={item.type} />
       </div>
 
@@ -183,8 +183,8 @@ export function HeroShowcase() {
   return (
     <div className="group relative w-full overflow-hidden py-2">
       {/* Subtle edge fades blending into natural page background */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-background to-transparent sm:w-20" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-background to-transparent sm:w-20" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-linear-to-r from-background to-transparent sm:w-20" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-linear-to-l from-background to-transparent sm:w-20" />
 
       {/* Infinite Scrolling Track */}
       <div className="animate-marquee flex gap-4 sm:gap-6">

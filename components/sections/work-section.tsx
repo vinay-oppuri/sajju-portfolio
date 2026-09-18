@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { projects } from "@/components/portfolio/data/portfolio-data";
-import { SectionLabel } from "@/components/portfolio/section-label";
+import { projects } from "@/data/portfolio-data";
+import { SectionLabel } from "@/components/section-label";
 import { cn } from "@/lib/utils";
 
 export function WorkSection() {
@@ -21,7 +21,7 @@ export function WorkSection() {
       </SectionLabel>
 
       {/* Projects Showcase List */}
-      <div className="mt-8 lg:mt-12 divide-y divide-border/80 border-y border-border/80">
+      <div className="mt-8 lg:mt-12 divide-y border-y border-border/80">
         {projects.map((project) => (
           <Link
             key={project.slug}

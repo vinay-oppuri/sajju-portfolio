@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { clientsData, ClientItem } from "@/components/portfolio/data/clients-data";
+import { clientsData, ClientItem } from "@/data/clients-data";
 
 function ClientLogoCard({ client }: { client: ClientItem }) {
   const Logo = client.svg;

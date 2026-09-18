@@ -5,8 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 
+import { Header, Footer } from "@/components/layout";
 import {
-  HeaderSection,
   HeroSection,
   ClientsMarquee,
   IntroSection,
@@ -14,9 +14,8 @@ import {
   ServicesSection,
   AboutSection,
   ProcessSection,
-  ContactFooter,
-} from "@/components/portfolio/sections";
-import SocialLinks from "../ui/social-links";
+} from "@/components/sections";
+import { SocialLinks } from "@/components/social-links";
 
 export function PortfolioHome() {
   const root = useRef<HTMLElement>(null);
@@ -78,7 +77,7 @@ export function PortfolioHome() {
 
   return (
     <main ref={root} className="w-full overflow-x-clip">
-      <HeaderSection />
+      <Header />
       <HeroSection />
       <ClientsMarquee />
       {/* <IntroSection /> */}
@@ -86,8 +85,10 @@ export function PortfolioHome() {
       <ServicesSection />
       <AboutSection />
       <ProcessSection />
-      <ContactFooter />
+      <Footer />
       <SocialLinks />
     </main>
   );
 }
+
+export default PortfolioHome;

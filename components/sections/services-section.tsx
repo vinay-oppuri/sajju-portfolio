@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionLabel } from "@/components/portfolio/section-label";
+import { SectionLabel } from "@/components/section-label";
 
 const servicesList = [
   {
@@ -40,7 +40,7 @@ export function ServicesSection() {
       </SectionLabel>
 
       {/* Services List */}
-      <div className="mt-8 lg:mt-12 divide-y divide-border/80 border-y border-border/80">
+      <div className="mt-8 lg:mt-12 divide-y border-y border-border/80">
         {servicesList.map((service) => (
           <div
             key={service.title}

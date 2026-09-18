@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionLabel } from "@/components/portfolio/section-label";
+import { SectionLabel } from "@/components/section-label";
 
 export function AboutSection() {
   return (
@@ -41,7 +41,7 @@ export function AboutSection() {
           </div>
 
           {/* Definition List */}
-          <dl className="border-t border-border/80 text-xs sm:text-sm divide-y divide-border/60 pt-2">
+          <dl className="border-t border-border/80 text-xs sm:text-sm divide-y pt-2">
             <div className="grid grid-cols-[4.5rem_1fr] sm:grid-cols-[5.5rem_1fr] py-3 gap-2">
               <dt className="text-muted-foreground font-mono">Tools</dt>
               <dd className="text-foreground">After Effects, Blender, Figma, Premiere Pro, Octane</dd>

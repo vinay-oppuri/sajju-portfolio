@@ -10,7 +10,7 @@ const socialLinks = [
   { label: "X / Twitter", href: "https://x.com" },
 ];
 
-export function ContactFooter() {
+export function Footer() {
   const email = "hello@sajju.design";
 
   return (
@@ -90,3 +90,6 @@ export function ContactFooter() {
     </footer>
   );
 }
+
+export const ContactFooter = Footer;
+export default Footer;

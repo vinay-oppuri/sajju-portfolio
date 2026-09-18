@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionLabel } from "@/components/portfolio/section-label";
+import { SectionLabel } from "@/components/section-label";
 
 const processSteps = [
   {
@@ -40,7 +40,7 @@ export function ProcessSection() {
       </SectionLabel>
 
       {/* 4-Step Clean Grid */}
-      <div className="mt-8 lg:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border/80 border-y border-border/80">
+      <div className="mt-8 lg:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x border-y border-border/80">
         {processSteps.map((step) => (
           <div
             key={step.number}

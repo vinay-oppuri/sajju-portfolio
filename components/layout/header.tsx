@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { navItems } from "@/components/portfolio/data/portfolio-data";
+import { navItems } from "@/data/portfolio-data";
 import { scrollToSection } from "@/lib/scroll";
 
-export function HeaderSection() {
+export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   // Close mobile menu on Escape key
@@ -167,3 +167,6 @@ export function HeaderSection() {
     </header>
   );
 }
+
+export const HeaderSection = Header;
+export default Header;

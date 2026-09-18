@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { heroVideos, HeroVideo } from "@/components/portfolio/data/hero-videos";
+import { heroVideos, HeroVideo } from "@/data/hero-videos";
 import { cn } from "@/lib/utils";
 
 interface CardTimeMachineProps {
@@ -25,7 +25,7 @@ export function CardTimeMachine({
     videoRefs.current.forEach((video, idx) => {
       if (!video) return;
       if (idx === activeIndex) {
-        video.play().catch(() => {});
+        video.play().catch(() => { });
       } else {
         video.pause();
       }
@@ -210,10 +210,10 @@ export function CardTimeMachine({
                       hoveredIndex === null
                         ? 1
                         : isSelected
-                        ? 1.4
-                        : Math.abs(index - hoveredIndex) < 0.5
-                        ? 1.25
-                        : 1,
+                          ? 1.4
+                          : Math.abs(index - hoveredIndex) < 0.5
+                            ? 1.25
+                            : 1,
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 />
