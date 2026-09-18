@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
-import { scrollToSection } from "@/lib/scroll";
 
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com" },
@@ -15,7 +15,7 @@ export function Footer() {
 
   return (
     <footer
-      className="bg-primary text-primary-foreground mt-16 pt-12 sm:pt-16 pb-8 sm:pb-10 w-full"
+      className="bg-primary text-primary-foreground m-4 md:m-16 pt-12 sm:pt-16 pb-8 sm:pb-10 rounded-xl"
       id="contact"
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-8 space-y-10 sm:space-y-12">
@@ -72,13 +72,13 @@ export function Footer() {
             ))}
           </div>
 
-          <button
-            onClick={() => scrollToSection("top")}
+          <Link
+            href="#top"
             className="inline-flex items-center gap-1.5 font-mono text-[11px] text-primary-foreground/70 hover:text-primary-foreground transition-colors cursor-pointer self-start sm:self-auto"
           >
             <span>Back to top</span>
             <ArrowUp className="size-3" />
-          </button>
+          </Link>
         </div>
 
         {/* Colophon */}

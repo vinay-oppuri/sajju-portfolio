@@ -1,8 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { scrollToSection } from "@/lib/scroll";
 import { FlipFadeText } from "@/components/ui/flip-fade-text";
 import { CardTimeMachine } from "@/components/ui/new-cards";
 
@@ -55,22 +54,21 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2.5 sm:gap-3 pt-1">
-              <Button
-                className="h-10! sm:h-11! rounded-xl bg-foreground px-4 sm:px-6 text-[11px] sm:text-xs uppercase tracking-wider text-background transition-all hover:bg-foreground/85 cursor-pointer shadow-xs"
-                onClick={() => scrollToSection("work")}
+              <Link
+                href="#work"
+                className="h-10! sm:h-11! rounded-xl bg-foreground px-4 sm:px-6 text-[11px] sm:text-xs uppercase tracking-wider text-background transition-all hover:bg-foreground/85 active:scale-95 cursor-pointer shadow-xs inline-flex items-center justify-center"
               >
-                View selected work
+                <span>View selected work</span>
                 <ArrowDown className="size-3.5 ml-1" />
-              </Button>
+              </Link>
 
-              <Button
-                className="h-10! sm:h-11! rounded-xl border border-border bg-card/60 px-4 sm:px-6 text-[11px] sm:text-xs uppercase tracking-wider text-foreground backdrop-blur-xs transition-all hover:bg-muted cursor-pointer shadow-xs"
-                onClick={() => scrollToSection("contact")}
-                variant="ghost"
+              <Link
+                href="#contact"
+                className="h-10! sm:h-11! rounded-xl border border-border bg-card/60 px-4 sm:px-6 text-[11px] sm:text-xs uppercase tracking-wider text-foreground backdrop-blur-xs transition-all hover:bg-muted active:scale-95 cursor-pointer shadow-xs inline-flex items-center justify-center"
               >
-                Start a project
+                <span>Start a project</span>
                 <ArrowUpRight className="size-3.5 ml-1" />
-              </Button>
+              </Link>
             </div>
           </div>
 

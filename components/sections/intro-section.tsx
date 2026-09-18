@@ -1,8 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { scrollToSection } from "@/lib/scroll";
 
 export function IntroSection() {
   return (
@@ -23,15 +22,14 @@ export function IntroSection() {
             From a brand launch to a product reveal, I help teams give their
             message focus, rhythm, and a reason to be watched.
           </p>
-          <Button
-            className="w-fit"
+          <Link
+            href="#contact"
+            className="w-fit inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline transition-colors"
             data-reveal
-            onClick={() => scrollToSection("contact")}
-            variant="link"
           >
             Let&apos;s work together
             <ArrowUpRight className="size-4" />
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

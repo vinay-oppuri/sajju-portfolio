@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { Button } from "@/components/ui/button";
 import { navItems } from "@/data/portfolio-data";
-import { scrollToSection } from "@/lib/scroll";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,28 +20,21 @@ export function Header() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const handleNavClick = (id: string) => {
-    setIsOpen(false);
-    scrollToSection(id);
-  };
-
   return (
     <header className="fixed inset-x-0 top-4 sm:top-6 z-50 px-4 sm:px-6 md:px-8 w-full max-w-6xl mx-auto pointer-events-none">
       {/* Mobile Bar (< md): Left = Logo, Right = Menu Button */}
       <div className="relative z-50 flex md:hidden items-center justify-center gap-2 w-full pointer-events-auto">
         {/* Left: Brand Logo */}
-        <a
+        <Link
           aria-label="Sajju home"
           className="flex size-10 items-center justify-center rounded-xl bg-muted/90 text-base font-medium text-foreground/80 backdrop-blur-md shadow-xs border border-border/40 hover:text-foreground active:scale-95 transition-all cursor-pointer"
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
+          href="/#top"
+          onClick={() => {
             if (isOpen) setIsOpen(false);
-            scrollToSection("top");
           }}
         >
           S
-        </a>
+        </Link>
 
         {/* Right: Mobile Menu Toggle Button */}
         <button
@@ -60,36 +52,31 @@ export function Header() {
       {/* Desktop Bar (md+): Centered floating pill */}
       <div className="hidden md:flex items-center justify-center gap-2 w-full pointer-events-auto">
         {/* Brand Icon */}
-        <a
+        <Link
           aria-label="Sajju home"
           className="flex size-9 sm:size-11 shrink-0 items-center justify-center rounded-lg bg-muted/90 text-md text-foreground/80 backdrop-blur-md shadow-xs transition-colors duration-200 hover:text-foreground cursor-pointer"
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("top");
-          }}
+          href="/#top"
         >
           S
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav
           className="
           flex h-9 sm:h-11 items-center justify-center rounded-lg
           bg-muted/90 px-2 backdrop-blur-xs shadow-xs
-            [&:has(button:hover)_button]:text-muted-foreground/50
-            [&:has(button:hover)_button:hover]:text-foreground
+            [&:has(a:hover)_a]:text-muted-foreground/50
+            [&:has(a:hover)_a:hover]:text-foreground
           "
         >
           {navItems.map(({ label, id }) => (
-            <Button
+            <Link
               key={id}
-              className="bg-transparent hover:bg-transparent! h-6! sm:h-7! px-8! text-foreground/80 rounded-md sm:px-3 text-md font-extralight tracking-tight cursor-pointer transition-colors duration-200"
-              onClick={() => scrollToSection(id)}
-              size="sm"
+              href={`/#${id}`}
+              className="h-6 sm:h-7 px-8 sm:px-3 text-foreground/80 rounded-md text-md font-extralight tracking-tight inline-flex items-center justify-center transition-colors duration-200"
             >
               {label}
-            </Button>
+            </Link>
           ))}
         </nav>
       </div>
@@ -123,9 +110,10 @@ export function Header() {
 
                 <div className="flex flex-col gap-1 mt-1">
                   {navItems.map(({ label, id }, index) => (
-                    <button
+                    <Link
                       key={id}
-                      onClick={() => handleNavClick(id)}
+                      href={`/#${id}`}
+                      onClick={() => setIsOpen(false)}
                       className="group flex items-center justify-between w-full px-3 py-3 rounded-xl text-left text-base font-normal text-foreground/90 hover:bg-muted/80 active:bg-muted transition-colors duration-150 cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
@@ -137,19 +125,20 @@ export function Header() {
                         </span>
                       </div>
                       <ArrowUpRight className="size-4 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
-                    </button>
+                    </Link>
                   ))}
                 </div>
 
                 {/* Bottom CTA & Info in Mobile Menu */}
                 <div className="mt-4 pt-4 border-t border-border/60 flex flex-col gap-2.5">
-                  <Button
-                    onClick={() => handleNavClick("contact")}
-                    className="w-full h-11 rounded-xl bg-foreground text-background text-xs uppercase tracking-wider font-medium hover:bg-foreground/90 active:scale-[0.98] transition-colors duration-150 cursor-pointer shadow-xs"
+                  <Link
+                    href="/#contact"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full h-11 rounded-xl bg-foreground text-background text-xs uppercase tracking-wider font-medium hover:bg-foreground/90 active:scale-[0.98] transition-colors duration-150 inline-flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                   >
-                    Start a project
-                    <ArrowUpRight className="size-4 ml-1.5" />
-                  </Button>
+                    <span>Start a project</span>
+                    <ArrowUpRight className="size-4" />
+                  </Link>
 
                   <div className="flex items-center justify-between px-2 pt-1 text-[11px] text-muted-foreground">
                     <span className="flex items-center gap-1.5">
