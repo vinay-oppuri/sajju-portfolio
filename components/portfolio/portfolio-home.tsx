@@ -16,6 +16,7 @@ import {
   ProcessSection,
   ContactFooter,
 } from "@/components/portfolio/sections";
+import SocialLinks from "../ui/social-links";
 
 export function PortfolioHome() {
   const root = useRef<HTMLElement>(null);
@@ -86,6 +87,7 @@ export function PortfolioHome() {
       <AboutSection />
       <ProcessSection />
       <ContactFooter />
+      <SocialLinks />
     </main>
   );
 }
