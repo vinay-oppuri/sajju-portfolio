@@ -61,7 +61,7 @@ export const SocialLinks = () => {
   return (
     <nav
       aria-label="Social links"
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex md:hidden items-center gap-1 rounded-xl bg-muted/90 backdrop-blur-md border border-border/40 p-1 shadow-lg"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex md:hidden items-center gap-1 rounded-xl bg-muted/90 backdrop-blur-md border border-border/40 px-1.5 py-0.5 shadow-lg"
     >
       {socialLinks.map(({ name, icon: Icon, url }) => {
         const isExternal = !url.startsWith("mailto:");

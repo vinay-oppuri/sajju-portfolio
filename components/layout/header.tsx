@@ -101,11 +101,11 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-50 mt-4 w-full rounded-2xl bg-card/95 backdrop-blur-xl border border-border/80 p-5 shadow-2xl pointer-events-auto md:hidden"
+              className="relative z-50 mt-4 w-full rounded-2xl bg-card/95 backdrop-blur-xl border border-border/40 p-5 shadow-2xl pointer-events-auto md:hidden"
             >
               <div className="flex flex-col gap-1">
 
-                <div className="flex flex-col gap-1 mt-1">
+                <div className="flex flex-col gap-1">
                   {navItems.map(({ label, id }, index) => (
                     <Link
                       key={id}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 export const metadata: Metadata = {
     title: "Sozzoo — Motion Designer",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 {children}
                 {/* Natural progressive spreading bottom blur */}
                 <ProgressiveBlur position="bottom" />
+                <ScrollToTop />
             </body>
         </html>
     );
