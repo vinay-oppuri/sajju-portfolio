@@ -73,7 +73,7 @@ export function Header() {
             <Link
               key={id}
               href={`/#${id}`}
-              className="h-6 sm:h-7 px-8 sm:px-3 text-foreground/80 rounded-md text-md font-extralight tracking-tight inline-flex items-center justify-center transition-colors duration-200"
+              className="h-6 sm:h-7 px-8 sm:px-6 text-foreground/80 rounded-md text-md font-extralight tracking-tighter inline-flex items-center justify-center transition-colors duration-200"
             >
               {label}
             </Link>
@@ -101,12 +101,9 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-50 mt-2 w-full rounded-2xl bg-card/95 backdrop-blur-xl border border-border/80 p-5 shadow-2xl pointer-events-auto md:hidden"
+              className="relative z-50 mt-4 w-full rounded-2xl bg-card/95 backdrop-blur-xl border border-border/80 p-5 shadow-2xl pointer-events-auto md:hidden"
             >
               <div className="flex flex-col gap-1">
-                <span className="text-[11px] font-mono uppercase tracking-[0.16em] text-muted-foreground px-3 py-1">
-                  Navigation
-                </span>
 
                 <div className="flex flex-col gap-1 mt-1">
                   {navItems.map(({ label, id }, index) => (
@@ -114,39 +111,24 @@ export function Header() {
                       key={id}
                       href={`/#${id}`}
                       onClick={() => setIsOpen(false)}
-                      className="group flex items-center justify-between w-full px-3 py-3 rounded-xl text-left text-base font-normal text-foreground/90 hover:bg-muted/80 active:bg-muted transition-colors duration-150 cursor-pointer"
+                      className="group flex items-center justify-between w-full px-3 py-3 rounded-xl text-left text-base font-extralight tracking-tighter text-foreground/70 cursor-pointer"
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-mono text-muted-foreground/60 group-hover:text-primary transition-colors">
-                          0{index + 1}
-                        </span>
-                        <span>
-                          {label}
-                        </span>
-                      </div>
+                      {label}
                       <ArrowUpRight className="size-4 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
                     </Link>
                   ))}
                 </div>
 
                 {/* Bottom CTA & Info in Mobile Menu */}
-                <div className="mt-4 pt-4 border-t border-border/60 flex flex-col gap-2.5">
+                <div className="mt-2 flex flex-col gap-2.5">
                   <Link
                     href="/#contact"
                     onClick={() => setIsOpen(false)}
-                    className="w-full h-11 rounded-xl bg-foreground text-background text-xs uppercase tracking-wider font-medium hover:bg-foreground/90 active:scale-[0.98] transition-colors duration-150 inline-flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                    className="w-full h-11 rounded-2xl bg-foreground text-background text-xs uppercase tracking-wider font-medium inline-flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                   >
                     <span>Start a project</span>
                     <ArrowUpRight className="size-4" />
                   </Link>
-
-                  <div className="flex items-center justify-between px-2 pt-1 text-[11px] text-muted-foreground">
-                    <span className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Available for work
-                    </span>
-                    <span>hello@sajju.design</span>
-                  </div>
                 </div>
               </div>
             </motion.div>
