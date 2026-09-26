@@ -3,6 +3,8 @@
   "style": "new-york",
   "rsc": true,
   "tsx": true,
+  "registryUrl": "https://raw.githubusercontent.com/palakonweb/Rewamp-UI/main/registry",
+  "repoRawUrl": "https://raw.githubusercontent.com/palakonweb/Rewamp-UI/main",
   "tailwind": {
     "config": "",
     "css": "app/globals.css",
@@ -11,7 +13,7 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@/components",
+    "components": "components/ui",
     "utils": "@/lib/utils",
     "ui": "@/components/ui",
     "lib": "@/lib",

@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { FlipFadeText } from "@/components/ui/flip-fade-text";
 import { CardTimeMachine } from "@/components/ui/new-cards";
+import { GlossButton } from "@/components/ui/gloss-button";
+import { ChromeBorderButton } from "@/components/ui/chrome-border-button";
 
 export function HeroSection() {
   return (
@@ -54,21 +55,16 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2.5 sm:gap-3 pt-1">
-              <Link
-                href="#work"
-                className="h-10! sm:h-11! rounded-xl bg-foreground px-4 sm:px-6 text-[11px] sm:text-xs uppercase tracking-wider text-background transition-all hover:bg-foreground/85 active:scale-95 cursor-pointer shadow-xs inline-flex items-center justify-center"
-              >
-                <span>View selected work</span>
-                <ArrowDown className="size-3.5 ml-1" />
-              </Link>
+              <ChromeBorderButton href="#work">
+                View selected work
+              </ChromeBorderButton>
 
-              <Link
+              <GlossButton
                 href="#contact"
-                className="h-10! sm:h-11! rounded-xl border border-border bg-card/60 px-4 sm:px-6 text-[11px] sm:text-xs uppercase tracking-wider text-foreground backdrop-blur-xs transition-all hover:bg-muted active:scale-95 cursor-pointer shadow-xs inline-flex items-center justify-center"
+                icon={<ArrowUpRight className="size-3.5" />}
               >
                 <span>Start a project</span>
-                <ArrowUpRight className="size-3.5 ml-1" />
-              </Link>
+              </GlossButton>
             </div>
           </div>
 
