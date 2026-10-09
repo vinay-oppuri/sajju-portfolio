@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { FlipFadeText } from "@/components/ui/flip-fade-text";
 import { CardTimeMachine } from "@/components/ui/new-cards";
@@ -125,14 +124,13 @@ export function HeroSection() {
               UI animations, every frame is designed with rhythm and focus.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2.5 sm:gap-3 pt-1">
+            <div className="flex flex-col items-center justify-center lg:items-end lg:justify-end w-full gap-2.5 sm:gap-3 pt-1">
               <ChromeBorderButton href="#work">
                 View selected work
               </ChromeBorderButton>
 
               <GlossButton
                 href="#contact"
-                icon={<ArrowUpRight className="size-3.5" />}
               >
                 <span>Start a project</span>
               </GlossButton>

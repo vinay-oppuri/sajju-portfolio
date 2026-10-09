@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ChromeBorderButtonProps
@@ -31,51 +30,48 @@ export const ChromeBorderButton = React.forwardRef<
     },
     ref
   ) => {
-    const buttonBody = (
-      <div
-        className={cn(
-          "group relative rounded-lg p-[1.5px] overflow-hidden select-none inline-flex items-center justify-center",
-          "shadow-[0_10px_28px_-8px_rgba(0,0,0,0.6),0_2px_8px_rgba(0,0,0,0.4)]",
-          "transition-all duration-200 hover:scale-[1.02] active:scale-[0.97] cursor-pointer",
-          className
-        )}
-        style={{
-          background:
-            "linear-gradient(135deg, #2a2a2e 0%, #151518 35%, #3a3a40 55%, #151518 80%, #2a2a2e 100%)",
-        }}
-      >
+    const buttonContent = (
+      <>
         {/* traveling chrome metallic ring - rotating conic-gradient */}
         <motion.span
           className="absolute -inset-[140%] blur-[1.5px] pointer-events-none"
           style={{
             background:
-              "conic-gradient(from 0deg, #0a0a0a, #ffffff, #8a8a8a, #ffffff, #1c1c1c, #dcdcdc, #ff2d3b, #dcdcdc, #1c1c1c, #ffffff, #8a8a8a, #ffffff, #0a0a0a)",
+              "conic-gradient(from 0deg, #0a0a0a, #ffffff, #8a8a8a, #ffffff, #1c1c1c, #dcdcdc, #ffffff, #dcdcdc, #1c1c1c, #ffffff, #8a8a8a, #ffffff, #0a0a0a)",
           }}
           animate={{ rotate: 360 }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
         />
 
         {/* Inner Face - Sleek Luxury Black */}
-        <div className="relative z-10 h-10 sm:h-11 px-5 sm:px-6 flex items-center justify-center rounded-[6.5px] bg-[#09090b] hover:bg-[#111114] select-none gap-2 border border-white/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),inset_0_0_12px_rgba(0,0,0,0.8)] transition-colors duration-200">
+        <div className="relative z-10 w-full h-full px-5 sm:px-6 flex items-center justify-center rounded-[6.5px] bg-[#09090b] hover:bg-[#111114] select-none border border-white/8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),inset_0_0_12px_rgba(0,0,0,0.8)] transition-colors duration-200">
           <motion.span
-            className="relative z-10 text-[11px] sm:text-xs font-semibold uppercase tracking-wider bg-clip-text text-transparent inline-flex items-center gap-1.5"
+            className="relative z-10 text-[11px] sm:text-xs font-semibold uppercase tracking-wider leading-none bg-clip-text text-transparent select-none flex items-center justify-center"
             style={{
               backgroundImage:
-                "linear-gradient(100deg, #ffffff 0%, #a1a1aa 22%, #f4f4f5 42%, #71717a 58%, #ffffff 76%, #d4d4d8 88%, #ffffff 100%)",
-              backgroundSize: "250% 100%",
+                "linear-gradient(110deg, #a1a1aa 0%, #e4e4e7 25%, #ffffff 50%, #e4e4e7 75%, #a1a1aa 100%)",
+              backgroundSize: "200% 100%",
             }}
-            animate={{ backgroundPosition: ["0% 50%", "250% 50%"] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+            animate={{ backgroundPosition: ["200% 50%", "0% 50%"] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
           >
-            <span>{children}</span>
-            {icon !== undefined ? (
-              icon
-            ) : (
-              <ArrowDown className="size-3.5 text-zinc-300 group-hover:text-white transition-colors shrink-0" />
-            )}
+            {children}
           </motion.span>
+
+          {icon && (
+            <span className="absolute right-3.5 sm:right-4 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+              {icon}
+            </span>
+          )}
         </div>
-      </div>
+      </>
+    );
+
+    const sharedClasses = cn(
+      "group relative rounded-lg p-[1.5px] overflow-hidden select-none inline-flex items-center justify-center h-10 sm:h-11 md:h-11 lg:h-11 shrink-0 cursor-pointer",
+      "shadow-[0_10px_28px_-8px_rgba(0,0,0,0.6),0_2px_8px_rgba(0,0,0,0.4)] hover:shadow-[0_14px_32px_-8px_rgba(0,0,0,0.8)]",
+      "transition-shadow duration-200",
+      className
     );
 
     if (href) {
@@ -87,9 +83,9 @@ export const ChromeBorderButton = React.forwardRef<
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
-            className="inline-block"
+            className={sharedClasses}
           >
-            {buttonBody}
+            {buttonContent}
           </a>
         );
       }
@@ -99,9 +95,9 @@ export const ChromeBorderButton = React.forwardRef<
           ref={ref as React.Ref<HTMLAnchorElement>}
           href={href}
           onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
-          className="inline-block"
+          className={sharedClasses}
         >
-          {buttonBody}
+          {buttonContent}
         </Link>
       );
     }
@@ -111,10 +107,10 @@ export const ChromeBorderButton = React.forwardRef<
         ref={ref as React.Ref<HTMLButtonElement>}
         type="button"
         onClick={onClick}
-        className="inline-block border-none bg-transparent p-0"
+        className={sharedClasses}
         {...props}
       >
-        {buttonBody}
+        {buttonContent}
       </button>
     );
   }
